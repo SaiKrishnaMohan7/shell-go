@@ -11,7 +11,7 @@ var built_in = map[string]bool{}
 
 func main() {
 	for {
-		fmt.Print("$ ")
+		fmt.Println("$ ")
 
 		reader := bufio.NewReader(os.Stdin)
 		input, err := reader.ReadString('\n')
