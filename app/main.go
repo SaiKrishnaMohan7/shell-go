@@ -9,9 +9,11 @@ import (
 
 var built_in = map[string]bool{}
 
+const PROMPT = "$ "
+
 func main() {
 	for {
-		fmt.Println("$ ")
+		fmt.Printf(PROMPT)
 
 		reader := bufio.NewReader(os.Stdin)
 		input, err := reader.ReadString('\n')
@@ -24,6 +26,6 @@ func main() {
 			// handle
 			return
 		}
-		fmt.Printf("%s: command not found", input)
+		fmt.Printf("%s: command not found \n", input)
 	}
 }
