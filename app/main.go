@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+var built_in = map[string]bool{}
+
 func main() {
 	fmt.Print("$ ")
 
@@ -16,5 +18,10 @@ func main() {
 		fmt.Println("Error reading input %w", err)
 	}
 	input = strings.TrimSpace(input)
-	fmt.Println("%s: command not found", input)
+
+	if built_in[input] {
+		// handle
+		return
+	}
+	fmt.Printf("%s: command not found", input)
 }
