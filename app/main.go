@@ -7,7 +7,9 @@ import (
 	"strings"
 )
 
-var built_in = map[string]bool{}
+var built_in = map[string]func(args string){
+	"exit": handleExit,
+}
 
 const PROMPT = "$ "
 
@@ -20,12 +22,18 @@ func main() {
 		if err != nil {
 			fmt.Println("Error reading input %w", err)
 		}
-		input = strings.TrimSpace(input)
+		cmd := strings.TrimSpace(input)
 
-		if built_in[input] {
-			// handle
+		cmdHandler, ok := built_in[cmd]
+
+		if ok {
+			cmdHandler("")
 			return
 		}
-		fmt.Printf("%s: command not found \n", input)
+		fmt.Printf("%s: command not found \n", cmd)
 	}
+}
+
+func handleExit(args string) {
+	os.Exit(0)
 }
