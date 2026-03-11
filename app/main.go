@@ -16,5 +16,5 @@ func main() {
 		fmt.Println("Error reading input %w", err)
 	}
 	input = strings.TrimSpace(input)
-	fmt.Println(input)
+	fmt.Println("%s: command not found", input)
 }
